@@ -8,6 +8,8 @@
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text> 
+    <text class="user-motto">{{motto}}</text>
+    <button wx:if="{{!requstData}}" bindtap="getPermission">发起一个请求</button>
+    <view>{{requstData}}</view>
   </view>
 </view>

@@ -6,6 +6,7 @@ Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
+    requstData:'',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -49,6 +50,23 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  getPermission:function(){
+    wx.request({
+      url: 'http://172.16.6.133:8080/resServer/common/getUploadToken',
+      success:(res) => {
+        console.log('success',res);
+        this.setData({
+          requstData: res.data.msg
+        })
+      },
+      fail: function(res) {
+        console.log('fail',res);
+      },
+      complete: function(res) {
+        console.log('complete',res);
+      },
     })
   }
 })
